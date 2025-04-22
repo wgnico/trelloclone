@@ -45,7 +45,7 @@
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
+            "assets": [              
               {
                 "glob": "**/*",
                 "input": "public"
@@ -122,5 +122,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "9ef2701e-f1ad-4693-bffa-5ce12853122f"
   }
 }
