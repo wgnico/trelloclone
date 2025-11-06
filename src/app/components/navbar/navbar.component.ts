@@ -18,4 +18,5 @@ export class NavbarComponent {
   faClose = faClose;
 
   isOpen = false;
+  isOpenBody = false;
 }
