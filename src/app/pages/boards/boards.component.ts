@@ -6,6 +6,7 @@ import {faBox, faWaveSquare, faClock, faAngleUp, faAngleDown, faHeart, faBorderA
 import {CdkAccordionModule} from '@angular/cdk/accordion';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
     selector: 'app-boards',
     imports: [NavbarComponent,FontAwesomeModule, CdkAccordionModule, CommonModule],
