@@ -4,14 +4,17 @@ import {
   DragDropModule,
   moveItemInArray,
   transferArrayItem
-} from '@angular/cdk/drag-drop';
+} 
+from '@angular/cdk/drag-drop';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { Column, ToDo } from '../../models/todo,models';
 import { CommonModule } from '@angular/common';
+import { Dialog } from '@angular/cdk/dialog';
+import { TodoDialogComponent } from '../../components/todo-dialog/todo-dialog.component';
 
 @Component({
   selector: 'app-board',
-  imports: [DragDropModule, NavbarComponent, CommonModule],
+  imports: [DragDropModule, NavbarComponent, CommonModule,TodoDialogComponent ],
   templateUrl: './board.component.html',
   styles: [
     `
@@ -27,6 +30,12 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class BoardComponent {
+
+  constructor(
+    private dialog: Dialog
+  ){}
+ 
+  
 
   columns: Column[] = [
     {
@@ -67,32 +76,6 @@ export class BoardComponent {
   ]
 
   todos: ToDo[] = [
-    {
-      id: '1',
-      title: 'task 1',
-    },
-    {
-      id: '2',
-      title: 'task 2',
-    },
-    {
-      id: '3',
-      title: 'task 3',
-    },
-  ];
-
-  doing: ToDo[] = [
-    {
-      id: '4',
-      title: 'watch Angular path in Platzi'
-    }
-  ];
-  
-  done: ToDo[] = [
-    {
-      id: '5',
-      title: 'play guitar'
-    }
   ];
 
   addColumn(){
@@ -107,8 +90,14 @@ export class BoardComponent {
       moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
     }else{
       transferArrayItem(event.previousContainer.data, event.container.data,event.previousIndex,event.currentIndex)
-    }
+    }    
+  }
 
-    
+  openDialog(){
+    this.dialog.open(TodoDialogComponent, {
+      minWidth: '300px',
+      maxWidth: '50%',
+      autoFocus: false
+    })
   }
 }
