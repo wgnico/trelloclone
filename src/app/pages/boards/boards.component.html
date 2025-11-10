@@ -64,7 +64,7 @@
 
     <cdk-accordion>
         <cdk-accordion-item #accordionItem="cdkAccordionItem" *ngFor="let item of items">
-            <button class=" w-full text-left" type="button" (click)="accordionItem.toggle()">
+            <button class=" w-full text-left" type="button" (click)="accordionItem.toggle()" >
                 {{item.label}}
             </button>
             <div [style.display]="accordionItem.expanded? '' : 'none'">
