@@ -103,7 +103,7 @@ export class BoardComponent {
       }
     });
     dialogRef.closed.subscribe(output => {
-      console.log(output)
+      console.log(output);
     })
   }
 }
