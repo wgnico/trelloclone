@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { HttpClient, HttpClientModule} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 interface Product{
   id: string;
@@ -11,8 +12,9 @@ interface Product{
 
 @Component({
   selector: 'app-scroll',  
-  imports: [NavbarComponent,HttpClientModule,CommonModule],  
+  imports: [NavbarComponent,HttpClientModule,ScrollingModule,CommonModule],  
   templateUrl: './scroll.component.html',
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ScrollComponent {
   products: Product[]=[];
