@@ -2,9 +2,11 @@
     <app-navbar></app-navbar>
     <div class="w-full grow bg-white-600 p-6">
         <h1 class="text-xl text-gray-700 font-semibold italic mb-5">Table</h1>
+        <input type="search" [formControl]="input" >
         <table cdk-table [dataSource]="dataSource" class="w-full text-sm text-left text-gray-500">
             <tr cdk-header-row *cdkHeaderRowDef="columns" class="text-xs uppercase text-gray-700 bg-gray-50"></tr>
-            <tr cdk-row *cdkRowDef="let row; columns: columns" class="bg-white border-b" class="text-xl text-gray-700 uppercase bg-gray-200 "></tr>
+            <tr cdk-row  class="bg-white border-b" [ngClass]="{'bg-red-200': row.price<100}" *cdkRowDef="let row; columns: columns"></tr>
+            <tr cdk-footer-row *cdkFooterRowDef="columns" class="text-xl text-gray-700 bg-gray-200"></tr>
 
              <!-- Price Column -->
             <ng-container cdkColumnDef="price">
@@ -34,9 +36,9 @@
             </ng-container>
             <!-- Actions Column -->
             <ng-container cdkColumnDef="actions">
-                <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>Actions</th>
+                <th cdk-header-cell class="py-3 px-6" *cdkHeaderCellDef>actions</th>
                 <td cdk-cell class="py-4 px-6" *cdkCellDef="let row">
-                <app-btn (click)="update(row)">Update</app-btn>
+                    <app-btn (click)="update(row)">Update</app-btn>
                 </td>
                 <td cdk-footer-cell class="py-3 px-6" *cdkFooterCellDef></td>
             </ng-container>

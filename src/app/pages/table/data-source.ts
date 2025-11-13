@@ -6,6 +6,7 @@ import { Product } from './../../models/product.model';
 export class DataSourceProduct extends DataSource<Product> {
 
   data = new BehaviorSubject<Product[]>([]);
+  originalData: Product[] = []
 
   connect(): Observable<Product[]> {
     return this.data;
@@ -13,6 +14,7 @@ export class DataSourceProduct extends DataSource<Product> {
 
   init(products: Product[]) {
     this.data.next(products);
+    this.originalData = products;
   }
 
   getTotal() {
@@ -32,6 +34,11 @@ export class DataSourceProduct extends DataSource<Product> {
       }
       this.data.next(products);
     }
+  }
+
+  find(query: string ){    
+    const newProducts = this.originalData.filter(item=> item.title.toLowerCase().includes(query.toLocaleLowerCase()));
+    this.data.next(newProducts)
   }
 
   disconnect() { }
