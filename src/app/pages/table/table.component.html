@@ -5,7 +5,7 @@
         <input type="search" [formControl]="input" >
         <table cdk-table [dataSource]="dataSource" class="w-full text-sm text-left text-gray-500">
             <tr cdk-header-row *cdkHeaderRowDef="columns" class="text-xs uppercase text-gray-700 bg-gray-50"></tr>
-            <tr cdk-row  class="bg-white border-b" [ngClass]="{'bg-red-200': row.price<100}" *cdkRowDef="let row; columns: columns"></tr>
+            <tr cdk-row  class="bg-white border-b" [ngClass]="{'bg-red-200': row.price < 100}" *cdkRowDef="let row; columns: columns"></tr>
             <tr cdk-footer-row *cdkFooterRowDef="columns" class="text-xl text-gray-700 bg-gray-200"></tr>
 
              <!-- Price Column -->
